@@ -1,0 +1,13 @@
+﻿@model Comments
+
+<h1>Model.Title</h1>
+<div class="alert alert-primary">Model.Description</div>
+
+<p>Comments:</p>
+
+<ul>
+    @foreach(var comment in Model.Comment)
+    {
+        <li>@comment</li>
+    }
+</ul>

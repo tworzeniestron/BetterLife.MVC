@@ -1,0 +1,33 @@
+﻿@model IEnumerable<BetterLife.Application.Conference.ConferenceDTO>
+
+@{
+    ViewData["Title"] = "Conferences";
+}
+
+<h1>Conferences</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-secondary">Create New</a>
+</p>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="card m-3" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">@item.Type</h5>
+                <h6 class="card-subtitle mt-2 date-time">@item.DateOfMeetings</h6>
+                <p class="card-text mt-2 text-muted">@item.TicketPrice zł</p>
+                <p class="card-text">@item.PostalCode @item.City</p>
+                <a class="btn btn-primary" asp-controller="Conference" asp-action="Details"
+                 asp-route-encodedType="@item.EncodedType">Details</a>
+                @if (item.IsEditable)
+                {
+                    <a class="btn btn-outline-secondary" asp-controller="Conference" asp-action="Edit"
+                 asp-route-encodedType="@item.EncodedType">Edit</a>
+                }
+
+                <a href="#" class="btn btn-success">Pay</a>
+            </div>
+        </div>
+    }
+</div>
